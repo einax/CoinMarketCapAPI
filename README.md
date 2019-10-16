@@ -10,8 +10,8 @@ Response codes:
 
 | Code | Description |
 | --- | --- |
-| 200 | OK. |
-| 500 | Internal server error. |
+| 200 | OK |
+| 500 | Internal server error |
 
 Example valid request:
 
@@ -41,11 +41,11 @@ Json object fields description
 | Name | Json type | Real type | Market Cap status | Einax status | Description |
 | ---- | ---- | --------- | ----------------- | ------------ | ----------- |
 | name | String | String | Recommended | Returned | Name of cryptocurrency |
-| unified_cryptoasset_id | Integer | Integer | Recommended | Returned | Available for currency present on [Unified Cryptoasset ID](https://pro-api.coinmarketcap.com/v1/cryptocurrency/map?CMC_PRO_API_KEY=UNIFIED-CRYPTOASSET-INDEX&listing_status=active) only |
+| unified_cryptoasset_id | Integer | Integer | Recommended | Returned | This field is only returned if currency present in [Unified Cryptoasset ID](https://pro-api.coinmarketcap.com/v1/cryptocurrency/map?CMC_PRO_API_KEY=UNIFIED-CRYPTOASSET-INDEX&listing_status=active)|
 | can_withdraw | Boolean | Boolean | Recommended | Returned |Indicates whether withdrawals are enabled|
-| can_deposit | Boolean | Boolean | Recommended | Returned |Identifies whether deposits are enabled or disabled.|
-| min_withdraw | String  | Decimal | Recommended | Returned | Minimum withdraw amount for a cryptocurrency.| 
-| max_withdraw | String  | Decimal | Recommended |Not applicable|We don't have withdraw limits|
+| can_deposit | Boolean | Boolean | Recommended | Returned |Identifies whether deposits are enabled or disabled|
+| min_withdraw | String  | Decimal | Recommended | Returned | Minimum withdraw amount for a cryptocurrency| 
+| max_withdraw | String  | Decimal | Recommended |Not applicable|Einax don't have withdraw limits|
 | maker_fee | String  | Decimal | Recommended |Not applicable|Fees are set on per-market basis|
 | taker_fee | String  | Decimal | Recommended |Not applicable|Fees are set on per-market basis|
 
@@ -91,11 +91,11 @@ Json object fields description
 
 | Name | Json type | Real type | Market Cap status | Einax status | Description |
 | ---- | ---- | --------- | ----------------- | ------------ | ----------- |
-| base_id | Integer | Integer | Recommended | Returned | Return for currency present on [Unified Cryptoasset ID](https://pro-api.coinmarketcap.com/v1/cryptocurrency/map?CMC_PRO_API_KEY=UNIFIED-CRYPTOASSET-INDEX&listing_status=active) only |
-| quote_id | Integer | Integer | Recommended | Returned | Return for currency present on [Unified Cryptoasset ID](https://pro-api.coinmarketcap.com/v1/cryptocurrency/map?CMC_PRO_API_KEY=UNIFIED-CRYPTOASSET-INDEX&listing_status=active) only |
+| base_id | Integer | Integer | Recommended | Returned | This field is only returned if currency present in [Unified Cryptoasset ID](https://pro-api.coinmarketcap.com/v1/cryptocurrency/map?CMC_PRO_API_KEY=UNIFIED-CRYPTOASSET-INDEX&listing_status=active) |
+| quote_id | Integer | Integer | Recommended | Returned |This field is only returned if currency present in [Unified Cryptoasset ID](https://pro-api.coinmarketcap.com/v1/cryptocurrency/map?CMC_PRO_API_KEY=UNIFIED-CRYPTOASSET-INDEX&listing_status=active) |
 | last_price | String  | Decimal | Mandatory | Returned |The price of the last executed order| 
-| base_volume | String  | Decimal | Mandatory | Returned |24 hour trading volume in base pair volume| 
-| quote_volume | String  | Decimal | Mandatory | Returned |24 hour trading volume in quote pair volume| 
+| base_volume | String  | Decimal | Mandatory | Returned |24 hour trading volume measured in base currency| 
+| quote_volume | String  | Decimal | Mandatory | Returned |24 hour trading volume measured in quote currency| 
 | isFrozen | String  | Integer | Mandatory | Returned |Indicates if the market is currently enabled (1) or disabled (0).|
 
 # Orderbook
@@ -226,14 +226,14 @@ Example response:
   ...
 ]
 ```
-Json object fields description
+JSON object fields description
 
 | Name | Type | Real type | Market Cap status | Einax status | Description |
 | ---- | ---- | --------- | ----------------- | ------------ | ----------- |
-| tradeID | Integer  | Integer | Mandatory | Returned |A unique ID associated with the trade for the currency pair transaction.|
-| price | String  | Decimal | Mandatory | Returned |Transaction price in base pair volume.| 
-| base_volume | String  | Decimal | Mandatory | Returned |Transaction amount in base pair volume.| 
-| quote_volume | String  | Decimal | Mandatory | Returned |Transaction amount in quote pair volume.|
+| tradeID | Integer  | Integer | Mandatory | Returned |A unique ID associated with the trade. |
+| price | String  | Decimal | Mandatory | Returned |Transaction price measured in base currency.| 
+| base_volume | String  | Decimal | Mandatory | Returned |Transaction amount in base currency.| 
+| quote_volume | String  | Decimal | Mandatory | Returned |Transaction amount in quote currency.|
 | trade_timestamp | Integer  | Integer | Mandatory | Returned |Unix timestamp of the last transaction in seconds.|
 | type | String  | String | Mandatory | Returned | Used to determine whether the transaction originated as a buy or sell.<br>buy – An ask was removed from the order book.<br>sell – A bid was removed from the order book.|
 
@@ -283,17 +283,17 @@ Example response:
   ...
 }
 ```
-Json object fields description
+JSON object fields description
 
 | Name | Type | Real type | Market Cap status | Einax status | Description |
 | ---- | ---- | --------- | ----------------- | ------------ | ----------- |
 | id | Integer  | Integer | Mandatory | Returned | Last market trade id. This field is absent if market is inactive or no trades was executed on the market|
 | last | String  | Decimal | Mandatory | Returned | Last trade price |
 | lowerstAsk | String  | Decimal | Mandatory | Returned | The best ask. Returns zero, in case there are no asks present on the market. |
-| highestBid | String  | Decimal | Mandatory | Returned | The best bid. Returns zero,in case there are no bids present on the market. |
+| highestBid | String  | Decimal | Mandatory | Returned | The best bid. Returns zero, in case there are no bids present on the market. |
 | percentChange | String  | Decimal | Mandatory | Returned | Calculated by the formula:<br><br>percentChange = (last price - start price) / start price * 100.|
-| baseVolume | String  | Decimal | Mandatory | Returned | Currently this value is calculated using the formula:<br><br>baseVolume = quote volume / last price<br><br> In future updates this will be correctly calculated based on actual trades. |
-| quoteVolume | String  | Decimal | Mandatory | Returned ||
+| baseVolume | String  | Decimal | Mandatory | Returned | Returns base volumes based on all trades during 24h window |
+| quoteVolume | String  | Decimal | Mandatory | Returned | Currently this value is calculated based on base volume.<br><br>quoteVolume = base volume / last price<br><br> In future updates this will be correctly calculated based on actual trades.  |
 | isFrozen | String  | Integer | Mandatory | Returned |Indicates if the market is currently enabled (1) or disabled (0).|
 | high24hr | String  | Decimal | Mandatory | Returned |Highest price in current 24h window|
 | low24hr | String  | Decimal | Mandatory | Returned |Lowest price in current 24h window|
