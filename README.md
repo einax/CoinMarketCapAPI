@@ -156,7 +156,7 @@ Example request:
 ```
 GET https://einax.com/api/coinmarketcap/orderbook/ETH_BTC?level=1
 ```
-Example response:
+Example response:by
 ```
 {
   "timestamp": 1570024074,
@@ -193,11 +193,11 @@ Response codes:
 
 | Code | Description |
 | --- | --- |
-| 200 | OK. |
-| 204 | Market is inactive. |
-| 400 | Bad request if inputed bad recommended parameters. |
-| 404 | Inputed market name does not exist, also if an empty market name is entered. |
-| 500 | Internal server error. |
+| 200 | OK |
+| 204 | Market is inactive |
+| 400 | Bad request |
+| 404 | Market name does not exists |
+| 500 | Internal server error |
 
 Example valid requests:
 ```
@@ -234,7 +234,7 @@ Json object fields description
 | price | String  | Decimal | Mandatory | Returned |Transaction price in base pair volume.| 
 | base_volume | String  | Decimal | Mandatory | Returned |Transaction amount in base pair volume.| 
 | quote_volume | String  | Decimal | Mandatory | Returned |Transaction amount in quote pair volume.|
-| trade_timestamp | Integer  | Integer | Mandatory | Returned |Unix timestamp of the last transaction in seconds|
+| trade_timestamp | Integer  | Integer | Mandatory | Returned |Unix timestamp of the last transaction in seconds.|
 | type | String  | String | Mandatory | Returned | Used to determine whether the transaction originated as a buy or sell.<br>buy – An ask was removed from the order book.<br>sell – A bid was removed from the order book.|
 
 # Summary
@@ -247,8 +247,8 @@ Response codes:
 
 | Code | Description |
 | --- | --- |
-| 200 | OK. |
-| 500 | Internal server error. |
+| 200 | OK |
+| 500 | Internal server error |
 
 Example valid request:
 ```
@@ -287,10 +287,10 @@ Json object fields description
 
 | Name | Type | Real type | Market Cap status | Einax status | Description |
 | ---- | ---- | --------- | ----------------- | ------------ | ----------- |
-| id | Integer  | Integer | Mandatory | Returned | Last market trade id. Absent if market is inactive or there was no trades so far|
+| id | Integer  | Integer | Mandatory | Returned | Last market trade id. This field is absent if market is inactive or no trades was executed on the market|
 | last | String  | Decimal | Mandatory | Returned | Last trade price |
-| lowerstAsk | String  | Decimal | Mandatory | Returned | The best ask. May be a zero, if there are no asks in the market. |
-| highestBid | String  | Decimal | Mandatory | Returned | The best bid. May be a zero, if there are no bids in the market. |
+| lowerstAsk | String  | Decimal | Mandatory | Returned | The best ask. Returns zero, in case there are no asks present on the market. |
+| highestBid | String  | Decimal | Mandatory | Returned | The best bid. Returns zero,in case there are no bids present on the market. |
 | percentChange | String  | Decimal | Mandatory | Returned | Calculated by the formula:<br><br>percentChange = (last price - start price) / start price * 100.|
 | baseVolume | String  | Decimal | Mandatory | Returned | Currently this value is calculated using the formula:<br><br>baseVolume = quote volume / last price<br><br> In future updates this will be correctly calculated based on actual trades. |
 | quoteVolume | String  | Decimal | Mandatory | Returned ||
