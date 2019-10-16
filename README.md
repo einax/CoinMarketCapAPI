@@ -36,9 +36,9 @@ Example response:
   ...
 }
 ```
-Json object fields description
+JSON object fields description
 
-| Name | Json type | Real type | Market Cap status | Einax status | Description |
+| Name | JSON type | Real type | Market Cap status | Einax status | Description |
 | ---- | ---- | --------- | ----------------- | ------------ | ----------- |
 | name | String | String | Recommended | Returned | Name of cryptocurrency |
 | unified_cryptoasset_id | Integer | Integer | Recommended | Returned | This field is only returned if currency present in [Unified Cryptoasset ID](https://pro-api.coinmarketcap.com/v1/cryptocurrency/map?CMC_PRO_API_KEY=UNIFIED-CRYPTOASSET-INDEX&listing_status=active)|
@@ -87,9 +87,9 @@ Example response:
   ...
 }
 ```
-Json object fields description
+JSON object fields description
 
-| Name | Json type | Real type | Market Cap status | Einax status | Description |
+| Name | JSON type | Real type | Market Cap status | Einax status | Description |
 | ---- | ---- | --------- | ----------------- | ------------ | ----------- |
 | base_id | Integer | Integer | Recommended | Returned | This field is only returned if currency present in [Unified Cryptoasset ID](https://pro-api.coinmarketcap.com/v1/cryptocurrency/map?CMC_PRO_API_KEY=UNIFIED-CRYPTOASSET-INDEX&listing_status=active) |
 | quote_id | Integer | Integer | Recommended | Returned |This field is only returned if currency present in [Unified Cryptoasset ID](https://pro-api.coinmarketcap.com/v1/cryptocurrency/map?CMC_PRO_API_KEY=UNIFIED-CRYPTOASSET-INDEX&listing_status=active) |
@@ -170,7 +170,7 @@ Example response:by
   ]
 }
 ```
-Json object fields description
+JSON object fields description
 
 | Name | Type | Real type | Market Cap status | Einax status | Description |
 | ---- | ---- | --------- | ----------------- | ------------ | ----------- |
@@ -187,7 +187,7 @@ Available at url: **https://einax.com/api/coinmarketcap/trades/**
 | Parameter | Status | Description |
 | --- | --- | --- |
 | Market pair | Mandatory | A pair such as “ETH_BTC” |
-| type | Recommended |  Query 'buy' side or 'sell' side only. |
+| type | Recommended |  Query 'buy' side or 'sell' side only |
 
 Response codes:
 
@@ -230,12 +230,12 @@ JSON object fields description
 
 | Name | Type | Real type | Market Cap status | Einax status | Description |
 | ---- | ---- | --------- | ----------------- | ------------ | ----------- |
-| tradeID | Integer  | Integer | Mandatory | Returned |A unique ID associated with the trade. |
-| price | String  | Decimal | Mandatory | Returned |Transaction price measured in base currency.| 
-| base_volume | String  | Decimal | Mandatory | Returned |Transaction amount in base currency.| 
-| quote_volume | String  | Decimal | Mandatory | Returned |Transaction amount in quote currency.|
-| trade_timestamp | Integer  | Integer | Mandatory | Returned |Unix timestamp of the last transaction in seconds.|
-| type | String  | String | Mandatory | Returned | Used to determine whether the transaction originated as a buy or sell.<br>buy – An ask was removed from the order book.<br>sell – A bid was removed from the order book.|
+| tradeID | Integer  | Integer | Mandatory | Returned |A unique ID associated with the trade|
+| price | String  | Decimal | Mandatory | Returned |Transaction price measured in base currency| 
+| base_volume | String  | Decimal | Mandatory | Returned |Transaction amount in base currency| 
+| quote_volume | String  | Decimal | Mandatory | Returned |Transaction amount in quote currency|
+| trade_timestamp | Integer  | Integer | Mandatory | Returned |Unix timestamp of the last transaction in seconds|
+| type | String  | String | Mandatory | Returned | Used to determine whether the transaction originated as a buy or sell.<br>buy – An ask was removed from the order book.<br>sell – A bid was removed from the order book|
 
 # Summary
 
@@ -288,13 +288,13 @@ JSON object fields description
 | Name | Type | Real type | Market Cap status | Einax status | Description |
 | ---- | ---- | --------- | ----------------- | ------------ | ----------- |
 | id | Integer  | Integer | Mandatory | Returned | Last market trade id. This field is absent if market is inactive or no trades was executed on the market|
-| last | String  | Decimal | Mandatory | Returned | Last trade price |
-| lowerstAsk | String  | Decimal | Mandatory | Returned | The best ask. Returns zero, in case there are no asks present on the market. |
-| highestBid | String  | Decimal | Mandatory | Returned | The best bid. Returns zero, in case there are no bids present on the market. |
-| percentChange | String  | Decimal | Mandatory | Returned | Calculated by the formula:<br><br>percentChange = (last price - start price) / start price * 100.|
+| last | String  | Decimal | Mandatory | Returned | Last trade price|
+| lowerstAsk | String  | Decimal | Mandatory | Returned | The best ask. Returns zero, in case there are no asks present on the market|
+| highestBid | String  | Decimal | Mandatory | Returned | The best bid. Returns zero, in case there are no bids present on the market|
+| percentChange | String  | Decimal | Mandatory | Returned | Calculated by the formula:<br><br>percentChange = (last price - start price) / start price * 100|
 | baseVolume | String  | Decimal | Mandatory | Returned | Returns base volumes based on all trades during 24h window |
-| quoteVolume | String  | Decimal | Mandatory | Returned | Currently this value is calculated based on base volume.<br><br>quoteVolume = base volume / last price<br><br> In future updates this will be correctly calculated based on actual trades.  |
-| isFrozen | String  | Integer | Mandatory | Returned |Indicates if the market is currently enabled (1) or disabled (0).|
+| quoteVolume | String  | Decimal | Mandatory | Returned | Currently this value is calculated based on base volume.<br><br>quoteVolume = base volume / last price<br><br> In future updates this will be correctly calculated based on actual trades|
+| isFrozen | String  | Integer | Mandatory | Returned |Indicates if the market is currently enabled (1) or disabled (0)|
 | high24hr | String  | Decimal | Mandatory | Returned |Highest price in current 24h window|
 | low24hr | String  | Decimal | Mandatory | Returned |Lowest price in current 24h window|
 
