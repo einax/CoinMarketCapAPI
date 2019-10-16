@@ -114,11 +114,11 @@ Response codes:
 
 | Code | Description |
 | --- | --- |
-| 200 | OK. |
-| 204 | Market is inactive. |
-| 400 | Bad request if inputed bad recommended parameters. |
-| 404 | Inputed market name does not exist, also if an empty market name is entered. |
-| 500 | Internal server error. |
+| 200 | OK |
+| 204 | Market has no open positions |
+| 400 | Bad request |
+| 404 | Market does not exists |
+| 500 | Internal server error |
 
 Example requests: 
 ```
@@ -295,8 +295,8 @@ Json object fields description
 | baseVolume | String  | Decimal | Mandatory | Returned | Currently this value is calculated using the formula:<br><br>baseVolume = quote volume / last price<br><br> In future updates this will be correctly calculated based on actual trades. |
 | quoteVolume | String  | Decimal | Mandatory | Returned ||
 | isFrozen | String  | Integer | Mandatory | Returned |Indicates if the market is currently enabled (1) or disabled (0).|
-| high24hr | String  | Decimal | Mandatory | Returned ||
-| low24hr | String  | Decimal | Mandatory | Returned ||
+| high24hr | String  | Decimal | Mandatory | Returned |Highest price in current 24h window|
+| low24hr | String  | Decimal | Mandatory | Returned |Lowest price in current 24h window|
 
 
 
