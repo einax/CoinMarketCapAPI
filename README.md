@@ -107,7 +107,7 @@ Available at url: **https://einax.com/api/coinmarketcap/orderbook/**
 | Parameter | Status | Description |
 | --- | --- | --- |
 | Market pair | Mandatory | A pair such as “ETH_BTC”. |
-| depth | Recommended | Orders depth quantity:[0 .. 100].<br>Not defined or 0 = 100. |
+| depth | Recommended | Orders depth quantity:[0 .. 500].<br>Not defined or 0 = full order book. |
 | level | Recommended | Level 1 – Only the best bid and ask.<br>Level 2 – Arranged by best bids and asks.<br>Level 3 – not support. |
 
 Response codes:
@@ -115,7 +115,7 @@ Response codes:
 | Code | Description |
 | --- | --- |
 | 200 | OK. |
-| 204 | While no bids or asks in market or market is inactive. |
+| 204 | Market is inactive. |
 | 400 | Bad request if inputed bad recommended parameters. |
 | 404 | Inputed market name does not exist, also if an empty market name is entered. |
 | 500 | Internal server error. |
@@ -194,7 +194,7 @@ Response codes:
 | Code | Description |
 | --- | --- |
 | 200 | OK. |
-| 204 | While no trades in market or market is inactive. |
+| 204 | Market is inactive. |
 | 400 | Bad request if inputed bad recommended parameters. |
 | 404 | Inputed market name does not exist, also if an empty market name is entered. |
 | 500 | Internal server error. |
@@ -292,7 +292,7 @@ Json object fields description
 | lowerstAsk | String  | Decimal | Mandatory | Returned | The best ask. May be a zero, if there are no asks in the market. |
 | highestBid | String  | Decimal | Mandatory | Returned | The best bid. May be a zero, if there are no bids in the market. |
 | percentChange | String  | Decimal | Mandatory | Returned | Calculated by the formula:<br><br>percentChange = (last price - start price) / start price * 100.|
-| baseVolume | String  | Decimal | Mandatory | Returned | While is calculated by the formula:<br><br>baseVolume = quote volume / last price<br><br> but we are developing to correctly calculate it. |
+| baseVolume | String  | Decimal | Mandatory | Returned | Currently this value is calculated using the formula:<br><br>baseVolume = quote volume / last price<br><br> In future updates this will be correctly calculated based on actual trades. |
 | quoteVolume | String  | Decimal | Mandatory | Returned ||
 | isFrozen | String  | Integer | Mandatory | Returned |Indicates if the market is currently enabled (1) or disabled (0).|
 | high24hr | String  | Decimal | Mandatory | Returned ||
