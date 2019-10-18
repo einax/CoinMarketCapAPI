@@ -286,10 +286,10 @@ JSON object fields description
 
 | Name | Type | Real type | Market Cap status | Einax status | Description |
 | ---- | ---- | --------- | ----------------- | ------------ | ----------- |
-| id | Integer  | Integer | Mandatory | Returned | Last market trade id. This field is absent if market is inactive or no trades was executed on the market|
+| id | Integer  | Integer | Mandatory | Returned | Last market trade id. This field is absent if no trades was executed on the market|
 | last | String  | Decimal | Mandatory | Returned | Last trade price|
-| lowerstAsk | String  | Decimal | Mandatory | Returned | The best ask. Returns zero, in case there are no asks present on the market|
-| highestBid | String  | Decimal | Mandatory | Returned | The best bid. Returns zero, in case there are no bids present on the market|
+| lowerstAsk | String  | Decimal | Mandatory | Returned | The best ask. Returns zero if there are no asks present on the market|
+| highestBid | String  | Decimal | Mandatory | Returned | The best bid. Returns zero if there are no bids present on the market|
 | percentChange | String  | Decimal | Mandatory | Returned | Calculated by the formula:<br><br>percentChange = (last price - start price) / start price * 100|
 | baseVolume | String  | Decimal | Mandatory | Returned | Returns base volumes based on all trades during 24h window |
 | quoteVolume | String  | Decimal | Mandatory | Returned | Currently this value is calculated based on base volume.<br><br>quoteVolume = base volume / last price<br><br> In future updates this will be correctly calculated based on actual trades|
