@@ -115,7 +115,6 @@ Response codes:
 | Code | Description |
 | --- | --- |
 | 200 | OK |
-| 204 | Market has no open positions |
 | 400 | Bad request |
 | 404 | Market does not exists |
 | 500 | Internal server error |
